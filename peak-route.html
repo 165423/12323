@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>巅峰路线 - 哈巴雪山</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1E3A8A',
+            secondary: '#3B82F6',
+            accent: '#93C5FD',
+            neutral: '#F1F5F9',
+            dark: '#0F172A',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            heading: ['Montserrat', 'sans-serif'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      }
+      .text-shadow-lg {
+        text-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      }
+      .backdrop-blur {
+        backdrop-filter: blur(8px);
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .clip-path-slant {
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      }
+      .bg-gradient-mountain {
+        background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 50%, #93C5FD 100%);
+      }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="font-sans text-dark bg-neutral overflow-x-hidden">
+  <!-- 导航栏 -->
+  <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+    <nav class="bg-primary/90 backdrop-blur text-white">
+      <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center">
+          <div class="text-2xl font-heading font-bold flex items-center">
+            <i class="fa fa-mountain mr-2" aria-hidden="true"></i>
+            <span>哈巴雪山</span>
+          </div>
+        </div>
+        
+        <!-- 桌面导航 -->
+        <div class="hidden md:flex items-center space-x-1">
+          <div class="group relative">
+            <a href="index.html" class="block py-2 px-4 hover:bg-secondary/30 transition-colors rounded-md">首页</a>
+          </div>
+          <div class="group relative">
+            <a href="snow-sky.html" class="block py-2 px-4 hover:bg-secondary/30 transition-colors rounded-md">雪岭天窗</a>
+          </div>
+          <div class="group relative">
+            <a href="mountain-view.html" class="block py-2 px-4 hover:bg-secondary/30 transition-colors rounded-md">圣山真颜</a>
+          </div>
+          <div class="group relative">
+            <a href="peak-journey.html" class="block py-2 px-4 hover:bg-secondary/30 transition-colors rounded-md">云巅征途</a>
+            <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100">
+              <div class="py-1">
+                <a href="peak-route.html" class="block px-4 py-2 text-sm text-dark hover:bg-neutral bg-neutral">巅峰路线</a>
+                <a href="equipment-guide.html" class="block px-4 py-2 text-sm text-dark hover:bg-neutral">行装秘籍</a>
+                <a href="summit-moment.html" class="block px-4 py-2 text-sm text-dark hover:bg-neutral">登峰时刻</a>
+              </div>
+            </div>
+          </div>
+          <div class="group relative">
+            <a href="secret-creatures.html" class="block py-2 px-4 hover:bg-secondary/30 transition-colors rounded-md">秘境生灵</a>
+          </div>
+          <div class="group relative">
+            <a href="expert-guide.html" class="block py-2 px-4 hover:bg-secondary/30 transition-colors rounded-md">行家指路</a>
+          </div>
+          <div class="group relative">
+            <a href="eternal-moments.html" class="block py-2 px-4 hover:bg-secondary/30 transition-colors rounded-md">刹那永恒</a>
+            <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100">
+              <div class="py-1">
+                <a href="light-saint.html" class="block px-4 py-2 text-sm text-dark hover:bg-neutral">光影圣境</a>
+                <a href="climbing-epic.html" class="block px-4 py-2 text-sm text-dark hover:bg-neutral">攀登史诗</a>
+                <a href="humanity-eternal.html" class="block px-4 py-2 text-sm text-dark hover:bg-neutral">人文永恒</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 移动端菜单按钮 -->
+        <div class="md:hidden">
+          <button id="menu-toggle" class="text-white hover:text-accent focus:outline-none">
+            <i class="fa fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- 移动端导航菜单 -->
+      <div id="mobile-menu" class="md:hidden hidden bg-primary/95 backdrop-blur">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-secondary/30">首页</a>
+          <a href="snow-sky.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-secondary/30">雪岭天窗</a>
+          <a href="mountain-view.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-secondary/30">圣山真颜</a>
+          <a href="peak-journey.html" class="block px-3 py-2 rounded-md text-base font-medium bg-secondary/30">云巅征途</a>
+          <div class="pl-4 space-y-1">
+            <a href="peak-route.html" class="block px-3 py-2 rounded-md text-sm font-medium bg-secondary/30">巅峰路线</a>
+            <a href="equipment-guide.html" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-secondary/30">行装秘籍</a>
+            <a href="summit-moment.html" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-secondary/30">登峰时刻</a>
+          </div>
+          <a href="secret-creatures.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-secondary/30">秘境生灵</a>
+          <a href="expert-guide.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-secondary/30">行家指路</a>
+          <a href="eternal-moments.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-secondary/30">刹那永恒</a>
+          <div class="pl-4 space-y-1">
+            <a href="light-saint.html" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-secondary/30">光影圣境</a>
+            <a href="climbing-epic.html" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-secondary/30">攀登史诗</a>
+            <a href="humanity-eternal.html" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-secondary/30">人文永恒</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- 英雄区域 -->
+  <section class="relative h-96 flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="https://picsum.photos/id/28/1920/600" alt="巅峰路线" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-b from-dark/60 to-dark/30"></div>
+    </div>
+    <div class="container mx-auto px-4 z-10 text-center">
+      <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-heading font-bold text-white text-shadow-lg">巅峰路线</h1>
+      <p class="text-[clamp(1rem,2vw,1.25rem)] text-white text-shadow max-w-2xl mx-auto mt-4">探索哈巴雪山的主要攀登路线和详细行程安排</p>
+    </div>
+  </section>
+
+  <!-- 内容区域 -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary mb-4">哈巴雪山主要攀登路线</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto">哈巴雪山有多种攀登路线可供选择，其中传统路线是最受欢迎的选择，适合大多数登山爱好者。无论选择哪条路线，都需要充分的准备和专业的指导。</p>
+      </div>
+      
+      <!-- 路线类型卡片 -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div class="bg-neutral rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+          <div class="h-60 overflow-hidden">
+            <img src="https://picsum.photos/id/33/600/400" alt="传统路线" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-heading font-semibold text-dark mb-2">传统路线</h3>
+            <p class="text-gray-600 mb-4">最经典、最安全的路线，适合大多数登山爱好者。全程需要2-3天，包含适应性训练和冲顶阶段。</p>
+            <div class="flex items-center text-sm text-gray-600 mb-4">
+              <div class="flex items-center mr-4">
+                <i class="fa fa-flag mr-2 text-secondary"></i>
+                <span>海拔提升: 1800米</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fa fa-clock-o mr-2 text-secondary"></i>
+                <span>耗时: 2-3天</span>
+              </div>
+            </div>
+            <div class="flex items-center text-sm text-gray-600 mb-4">
+              <div class="flex items-center mr-4">
+                <i class="fa fa-signal mr-2 text-secondary"></i>
+                <span>难度: 中级</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fa fa-users mr-2 text-secondary"></i>
+                <span>成功率: 90%</span>
+              </div>
+            </div>
+            <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">推荐路线</span>
+          </div>
+        </div>
+        
+        <div class="bg-neutral rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+          <div class="h-60 overflow-hidden">
+            <img src="https://picsum.photos/id/34/600/400" alt="北坡路线" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-heading font-semibold text-dark mb-2">北坡路线</h3>
+            <p class="text-gray-600 mb-4">技术性较强的路线，需要冰攀和雪地行走技能。适合有经验的登山者，提供更具挑战性的攀登体验。</p>
+            <div class="flex items-center text-sm text-gray-600 mb-4">
+              <div class="flex items-center mr-4">
+                <i class="fa fa-flag mr-2 text-secondary"></i>
+                <span>海拔提升: 2000米</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fa fa-clock-o mr-2 text-secondary"></i>
+                <span>耗时: 3-4天</span>
+              </div>
+            </div>
+            <div class="flex items-center text-sm text-gray-600 mb-4">
+              <div class="flex items-center mr-4">
+                <i class="fa fa-signal mr-2 text-secondary"></i>
+                <span>难度: 高级</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fa fa-users mr-2 text-secondary"></i>
+                <span>成功率: 75%</span>
+              </div>
+            </div>
+            <span class="inline-block px-3 py-1 bg-gray-100 text-gray-600 text-sm font-medium rounded-full">技术路线</span>
+          </div>
+        </div>
+        
+        <div class="bg-neutral rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+          <div class="h-60 overflow-hidden">
+            <img src="https://picsum.photos/id/35/600/400" alt="东坡路线" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-heading font-semibold text-dark mb-2">东坡路线</h3>
+            <p class="text-gray-600 mb-4">较少人走的路线，景色原始壮丽，但需要更好的体能和导航能力。适合有经验的登山者探索新领域。</p>
+            <div class="flex items-center text-sm text-gray-600 mb-4">
+              <div class="flex items-center mr-4">
+                <i class="fa fa-flag mr-2 text-secondary"></i>
+                <span>海拔提升: 1900米</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fa fa-clock-o mr-2 text-secondary"></i>
+                <span>耗时: 3-4天</span>
+              </div>
+            </div>
+            <div class="flex items-center text-sm text-gray-600 mb-4">
+              <div class="flex items-center mr-4">
+                <i class="fa fa-signal mr-2 text-secondary"></i>
+                <span>难度: 高级</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fa fa-users mr-2 text-secondary"></i>
+                <span>成功率: 70%</span>
+              </div>
+            </div>
+            <span class="inline-block px-3 py-1 bg-gray-100 text-gray-600 text-sm font-medium rounded-full">探险路线</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 传统路线详细行程 -->
+      <div class="mb-16">
+        <h3 class="text-2xl font-heading font-semibold text-dark mb-8 text-center">传统路线详细行程</h3>
+        
+        <div class="relative">
+          <!-- 时间线 -->
+          <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-primary/20 transform md:-translate-x-1/2"></div>
+          
+          <!-- 行程1 -->
+          <div class="relative mb-10 md:mb-20">
+            <div class="flex flex-col md:flex-row items-center">
+              <div class="order-2 md:order-1 md:w-1/2 md:pr-12 md:text-right">
+                <div class="bg-neutral p-6 rounded-lg shadow-md">
+                  <h4 class="text-xl font-heading font-semibold text-primary mb-2">Day 1: 哈巴村 → 大本营</h4>
+                  <p class="text-gray-600 mb-4">早晨从哈巴村出发，乘车至海拔约3500米的登山起点，开始徒步。沿途经过原始森林和高山草甸，欣赏壮丽的雪山景观。下午抵达大本营（海拔约4100米），进行适应性训练和登山装备检查。</p>
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">海拔: 4100米</span>
+                    <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">徒步: 4-5小时</span>
+                    <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">难度: 低</span>
+                  </div>
+                  <div class="rounded-lg overflow-hidden h-48">
+                    <img src="https://picsum.photos/id/36/800/400" alt="大本营" class="w-full h-full object-cover">
+                  </div>
+                </div>
+              </div>
+              <div class="order-1 md:order-2 flex justify-center md:justify-start mb-4 md:mb-0">
+                <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shadow-lg z-10">
+                  <span class="font-bold">1</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 行程2 -->
+          <div class="relative mb-10 md:mb-20">
+            <div class="flex flex-col md:flex-row items-center">
+              <div class="order-2 md:order-2 md:w-1/2 md:pl-12">
+                <div class="bg-neutral p-6 rounded-lg shadow-md">
+                  <h4 class="text-xl font-heading font-semibold text-primary mb-2">Day 2: 大本营 → C1营地 → 大本营</h4>
+                  <p class="text-gray-600 mb-4">凌晨出发，向海拔约4800米的C1营地进发。这一段路开始出现积雪，需要使用冰爪和冰镐。到达C1营地后稍作休息，进行技术训练，然后返回大本营休息，为次日冲顶保存体力。</p>
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">海拔: 4800米</span>
+                    <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">徒步: 6-8小时</span>
+                    <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">难度: 中</span>
+                  </div>
+                  <div class="rounded-lg overflow-hidden h-48">
+                    <img src="https://picsum.photos/id/37/800/400" alt="C1营地" class="w-full h-full object-cover">
+                  </div>
+                </div>
+              </div>
+              <div class="order-1 flex justify-center md:justify-end mb-4 md:mb-0">
+                <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shadow-lg z-10">
+                  <span class="font-bold">2</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 行程3 -->
+          <div class="relative mb-10 md:mb-20">
+            <div class="flex flex-col md:flex-row items-center">
+              <div class="order-2 md:order-1 md:w-1/2 md:pr-12 md:text-right">
+                <div class="bg-neutral p-6 rounded-lg shadow-md">
+                  <h4 class="text-xl font-heading font-semibold text-primary mb-2">Day 3: 大本营 → 顶峰 → 哈巴村</h4>
+                  <p class="text-gray-600 mb-4">凌晨2-3点出发，开始冲顶。这一段路需要攀爬陡峭的雪坡和岩石，是整个行程中最具挑战性的部分。预计在日出前到达顶峰（海拔5396米），欣赏壮丽的日出和云海。之后沿原路返回大本营，稍作休息后返回哈巴村。</p>
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">海拔: 5396米</span>
+                    <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">徒步: 12-14小时</span>
+                    <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">难度: 高</span>
+                  </div>
+                  <div class="rounded-lg overflow-hidden h-48">
+                    <img src="https://picsum.photos/id/38/800/400" alt="顶峰" class="w-full h-full object-cover">
+                  </div>
+                </div>
+              </div>
+              <div class="order-1 md:order-2 flex justify-center md:justify-start mb-4 md:mb-0">
+                <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shadow-lg z-10">
+                  <span class="font-bold">3</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 路线地图 -->
+      <div class="mb-16">
+        <h3 class="text-2xl font-heading font-semibold text-dark mb-8 text-center">哈巴雪山传统路线地图</h3>
+        <div class="bg-neutral rounded-xl p-4 md:p-8 shadow-lg">
+          <div class="aspect-video rounded-lg overflow-hidden">
+            <img src="https://picsum.photos/id/39/1200/600" alt="哈巴雪山路线地图" class="w-full h-full object-cover">
+          </div>
+          <div class="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="bg-white p-4 rounded-lg shadow-sm">
+              <div class="flex items-center mb-2">
+                <div class="w-4 h-4 rounded-full bg-green-500 mr-2"></div>
+                <h4 class="font-medium">哈巴村</h4>
+              </div>
+              <p class="text-sm text-gray-600">起点，海拔约2700米</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-sm">
+              <div class="flex items-center mb-2">
+                <div class="w-4 h-4 rounded-full bg-blue-500 mr-2"></div>
+                <h4 class="font-medium">大本营</h4>
+              </div>
+              <p class="text-sm text-gray-600">休息和适应，海拔约4100米</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-sm">
+              <div class="flex items-center mb-2">
+                <div class="w-4 h-4 rounded-full bg-purple-500 mr-2"></div>
+                <h4 class="font-medium">C1营地</h4>
+              </div>
+              <p class="text-sm text-gray-600">技术训练，海拔约4800米</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-sm">
+              <div class="flex items-center mb-2">
+                <div class="w-4 h-4 rounded-full bg-red-500 mr-2"></div>
+                <h4 class="font-medium">顶峰</h4>
+              </div>
+              <p class="text-sm text-gray-600">海拔5396米</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 海拔变化图 -->
+      <div class="mb-16">
+        <h3 class="text-2xl font-heading font-semibold text-dark mb-8 text-center">海拔变化与时间</h3>
+        <div class="bg-neutral rounded-xl p-4 md:p-8 shadow-lg">
+          <div class="aspect-video rounded-lg overflow-hidden bg-white p-4">
+            <img src="https://picsum.photos/id/40/1200/600" alt="海拔变化图" class="w-full h-full object-cover">
+          </div>
+          <div class="mt-6">
+            <h4 class="font-medium text-primary mb-4">海拔变化说明</h4>
+            <p class="text-gray-600 mb-4">哈巴雪山传统路线的海拔变化较为明显，从哈巴村的2700米逐渐上升到顶峰的5396米。合理的海拔适应是成功登顶的关键，行程安排中特意安排了在大本营和C1营地的适应日，帮助登山者逐步适应高原环境。</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="bg-white p-4 rounded-lg shadow-sm">
+                <h5 class="font-medium mb-2">海拔适应</h5>
+                <p class="text-sm text-gray-600">行程安排充分考虑了海拔适应原则，每天海拔上升不超过500米，确保身体有足够的时间适应高原环境。</p>
+              </div>
+              <div class="bg-white p-4 rounded-lg shadow-sm">
+                <h5 class="font-medium mb-2">高原反应</h5>
+                <p class="text-sm text-gray-600">在4000米以上的高度，大多数人会出现不同程度的高原反应，如头痛、恶心、失眠等。行程中安排了足够的休息时间，并提供氧气和药物支持。</p>
+              </div>
+              <div class="bg-white p-4 rounded-lg shadow-sm">
+                <h5 class="font-medium mb-2">冲顶策略</h5>
+                <p class="text-sm text-gray-600">冲顶阶段采用"climb high, sleep low"策略，先上升到C1营地适应更高海拔，再返回大本营休息，以提高登顶成功率。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 攀登小贴士 -->
+      <div class="bg-primary/5 rounded-xl p-8 md:p-10">
+        <h3 class="text-2xl font-heading font-semibold text-dark mb-6">攀登小贴士</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h4 class="text-lg font-medium text-primary mb-3 flex items-center">
+              <i class="fa fa-lightbulb-o mr-2"></i>
+              路线选择建议
+            </h4>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start">
+                <i class="fa fa-check-circle text-secondary mt-1 mr-2"></i>
+                <span>初次攀登哈巴雪山建议选择传统路线</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fa fa-check-circle text-secondary mt-1 mr-2"></i>
+                <span>技术路线需要有冰雪攀登经验和相应装备</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fa fa-check-circle text-secondary mt-1 mr-2"></i>
+                <span>建议雇佣当地专业向导，熟悉地形和天气变化</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fa fa-check-circle text-secondary mt-1 mr-2"></i>
+                <span>不要独自攀登，团队合作和互相支持很重要</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="text-lg font-medium text-primary mb-3 flex items-center">
+              <i class="fa fa-exclamation-triangle mr-2"></i>
+              安全注意事项
+            </h4>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start">
+                <i class="fa fa-check-circle text-secondary mt-1 mr-2"></i>
+                <span>冲顶日需在凌晨出发，确保在中午前完成登顶和下撤</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fa fa-check-circle text-secondary mt-1 mr-2"></i>
+                <span>密切关注天气变化，如遇恶劣天气立即停止攀登</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fa fa-check-circle text-secondary mt-1 mr-2"></i>
+                <span>尊重当地文化和环境，不随意破坏自然景观</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fa fa-check-circle text-secondary mt-1 mr-2"></i>
+                <span>随身携带急救包和必要的药品</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 攀登数据 -->
+  <section class="py-16 bg-gradient-mountain text-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl md:text-3xl font-heading font-bold mb-4">传统路线攀登数据</h2>
+        <p class="text-white/80 max-w-2xl mx-auto">根据过去5年的攀登记录分析</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-white/10 backdrop-blur rounded-xl p-6 shadow-lg text-center">
+          <div class="text-4xl md:text-5xl font-bold mb-2">92%</div>
+          <p class="text-lg opacity-90">传统路线成功率</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur rounded-xl p-6 shadow-lg text-center">
+          <div class="text-4xl md:text-5xl font-bold mb-2">4.8小时</div>
+          <p class="text-lg opacity-90">平均冲顶时间</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur rounded-xl p-6 shadow-lg text-center">
+          <div class="text-4xl md:text-5xl font-bold mb-2">3.2小时</div>
+          <p class="text-lg opacity-90">平均下撤时间</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur rounded-xl p-6 shadow-lg text-center">
+          <div class="text-4xl md:text-5xl font-bold mb-2">75%</div>
+          <p class="text-lg opacity-90">12月登顶率</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-dark text-white pt-16 pb-8">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div>
+          <h3 class="text-xl font-heading font-semibold mb-6">哈巴雪山</h3>
+          <p class="text-gray-400 mb-6">探索神圣雪山，挑战自我极限</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fa fa-facebook"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fa fa-twitter"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fa fa-instagram"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fa fa-youtube-play"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-heading font-semibold mb-6">快速链接</h3>
+          <ul class="space-y-3">
+            <li><a href="snow-sky.html" class="text-gray-400 hover:text-white transition-colors">雪岭天窗</a></li>
+            <li><a href="mountain-view.html" class="text-gray-400 hover:text-white transition-colors">圣山真颜</a></li>
+            <li><a href="peak-journey.html" class="text-gray-400 hover:text-white transition-colors">云巅征途</a></li>
+            <li><a href="secret-creatures.html" class="text-gray-400 hover:text-white transition-colors">秘境生灵</a></li>
+            <li><a href="expert-guide.html" class="text-gray-400 hover:text-white transition-colors">行家指路</a></li>
+            <li><a href="eternal-moments.html" class="text-gray-400 hover:text-white transition-colors">刹那永恒</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-heading font-semibold mb-6">实用信息</h3>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">登山指南</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">住宿推荐</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">天气预报</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">装备租赁</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">当地向导</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">常见问题</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-heading font-semibold mb-6">联系我们</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <i class="fa fa-map-marker mt-1 mr-3 text-secondary"></i>
+              <span class="text-gray-400">云南省迪庆州香格里拉市哈巴村</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fa fa-phone mr-3 text-secondary"></i>
+              <span class="text-gray-400">+86 123 4567 8910</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fa fa-envelope mr-3 text-secondary"></i>
+              <span class="text-gray-400">info@habamountain.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
+        <p>&copy; 2025 哈巴雪山官方网站. 保留所有权利.</p>
+      </div>
+    </div>
+  </footer>
+
+   <script>
+    // 导航栏滚动效果
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('bg-primary/95');
+        navbar.classList.add('shadow-lg');
+      } else {
+        navbar.classList.remove('bg-primary/95');
+        navbar.classList.remove('shadow-lg');
+      }
+    });
+    
+    // 移动端菜单切换
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      if (!mobileMenu.classList.contains('hidden')) {
+        menuToggle.innerHTML = '<i class="fa fa-times text-xl"></i>';
+      } else {
+        menuToggle.innerHTML = '<i class="fa fa-bars text-xl"></i>';
+      }
+    });
+    
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // 如果是在移动端，点击后关闭菜单
+          if (window.innerWidth < 768 && !mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            menuToggle.innerHTML = '<i class="fa fa-bars text-xl"></i>';
+          }
+        }
+      });
+    });
+    
+    // FAQ 切换
+    const faqToggles = document.querySelectorAll('.faq-toggle');
+    
+    faqToggles.forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const content = toggle.nextElementSibling;
+        const icon = toggle.querySelector('i');
+        
+        content.classList.toggle('hidden');
+        icon.classList.toggle('fa-plus');
+        icon.classList.toggle('fa-minus');
+        icon.classList.toggle('rotate-45');
+      });
+    });
+    
+    // 返回顶部按钮
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.remove('opacity-0', 'invisible');
+        backToTopButton.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopButton.classList.add('opacity-0', 'invisible');
+        backToTopButton.classList.remove('opacity-100', 'visible');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // 图片懒加载
+    document.addEventListener("DOMContentLoaded", function() {
+      const lazyImages = [].slice.call(document.querySelectorAll("img"));
+      
+      if ("IntersectionObserver" in window) {
+        let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              let lazyImage = entry.target;
+              lazyImage.classList.add("fade-in");
+              lazyImageObserver.unobserve(lazyImage);
+            }
+          });
+        });
+        
+        lazyImages.forEach(function(lazyImage) {
+          lazyImageObserver.observe(lazyImage);
+        });
+      }
+    });
+  </script>
+</body>
+</html>    
