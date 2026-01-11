@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>哈巴雪山 - 自然与挑战的完美融合</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1E3A8A',       // 主色调：深蓝色
+            secondary: '#2563EB',     // 辅助色：中蓝色
+            accent: '#60A5FA',        // 强调色：浅蓝色
+            neutral: '#F8FAFC',       // 中性色：极浅灰
+            dark: '#0F172A',          // 深色：近黑色
+            'primary-light': '#3B82F6', // 主色浅色变体
+            'secondary-light': '#60A5FA', // 辅助色浅色变体
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            heading: ['Montserrat', 'sans-serif'],
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.8s ease-in-out forwards',
+            'slide-up': 'slideUp 0.8s ease-out forwards',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(20px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          },
+          boxShadow: {
+            'elevation-1': '0 2px 5px rgba(0, 0, 0, 0.05)',
+            'elevation-2': '0 4px 10px rgba(0, 0, 0, 0.1)',
+            'elevation-3': '0 8px 30px rgba(0, 0, 0, 0.12)',
+            'elevation-hover': '0 15px 35px rgba(0, 0, 0, 0.18)',
+          }
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .text-shadow-lg {
+        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+      .backdrop-blur {
+        backdrop-filter: blur(8px);
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .clip-path-slant {
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      }
+      .bg-gradient-mountain {
+        background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 50%, #93C5FD 100%);
+      }
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+      .animate-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="font-sans text-dark bg-neutral overflow-x-hidden">
+  <!-- 导航栏 -->
+  <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+    <nav class="bg-primary/90 backdrop-blur text-white shadow-md">
+      <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center">
+          <div class="text-2xl font-heading font-bold flex items-center">
+            <i class="fa fa-mountain mr-2 text-secondary" aria-hidden="true"></i>
+            <span>哈巴雪山</span>
+          </div>
+        </div>
+
+        <!-- 桌面导航 -->
+        <div class="hidden md:flex items-center space-x-1">
+          <div class="group relative">
+            <a href="index.html" class="block py-2 px-4 hover:bg-secondary/30 transition-all duration-200 rounded-md">首页</a>
+          </div>
+          <div class="group relative">
+            <a href="snow-sky.html" class="block py-2 px-4 hover:bg-secondary/30 transition-all duration-200 rounded-md">雪岭天窗</a>
+          </div>
+          <div class="group relative">
+            <a href="mountain-view.html" class="block py-2 px-4 hover:bg-secondary/30 transition-all duration-200 rounded-md">圣山真颜</a>
+          </div>
+          <div class="group relative">
+            <a href="peak-journey.html" class="block py-2 px-4 hover:bg-secondary/30 transition-all duration-200 rounded-md">云巅征途</a>
+            <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100">
+              <div class="py-1">
+                <a href="peak-route.html" class="block px-4 py-2 text-sm text-dark hover:bg-neutral">巅峰路线</a>
+                <a href="equipment-guide.html" class="block px-4 py-2 text-sm text-dark hover:bg-neutral">行装秘籍</a>
+                <a href="summit-moment.html" class="block px-4 py-2 text-sm text-dark hover:bg-neutral">登峰时刻</a>
+              </div>
+            </div>
+          </div>
+          <div class="group relative">
+            <a href="secret-creatures.html" class="block py-2 px-4 hover:bg-secondary/30 transition-all duration-200 rounded-md">秘境生灵</a>
+          </div>
+          <div class="group relative">
+            <a href="expert-guide.html" class="block py-2 px-4 hover:bg-secondary/30 transition-all duration-200 rounded-md">行家指路</a>
+          </div>
+          <div class="group relative">
+            <a href="eternal-moments.html" class="block py-2 px-4 hover:bg-secondary/30 transition-all duration-200 rounded-md">刹那永恒</a>
+            <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100">
+              <div class="py-1">
+                <a href="light-saint.html" class="block px-4 py-2 text-sm text-dark hover:bg-neutral">光影圣境</a>
+                <a href="climbing-epic.html" class="block px-4 py-2 text-sm text-dark hover:bg-neutral">攀登史诗</a>
+                <a href="humanity-eternal.html" class="block px-4 py-2 text-sm text-dark hover:bg-neutral">人文永恒</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 移动端菜单按钮 -->
+        <div class="md:hidden">
+          <button id="menu-toggle" class="text-white hover:text-accent focus:outline-none transition-colors">
+            <i class="fa fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- 移动端导航菜单 -->
+      <div id="mobile-menu" class="md:hidden hidden bg-primary/95 backdrop-blur shadow-lg">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-secondary/30 transition-colors">首页</a>
+          <a href="snow-sky.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-secondary/30 transition-colors">雪岭天窗</a>
+          <a href="mountain-view.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-secondary/30 transition-colors">圣山真颜</a>
+          <a href="peak-journey.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-secondary/30 transition-colors">云巅征途</a>
+          <div class="pl-4 space-y-1">
+            <a href="peak-route.html" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-secondary/30 transition-colors">巅峰路线</a>
+            <a href="equipment-guide.html" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-secondary/30 transition-colors">行装秘籍</a>
+            <a href="summit-moment.html" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-secondary/30 transition-colors">登峰时刻</a>
+          </div>
+          <a href="secret-creatures.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-secondary/30 transition-colors">秘境生灵</a>
+          <a href="expert-guide.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-secondary/30 transition-colors">行家指路</a>
+          <a href="eternal-moments.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-secondary/30 transition-colors">刹那永恒</a>
+          <div class="pl-4 space-y-1">
+            <a href="light-saint.html" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-secondary/30 transition-colors">光影圣境</a>
+            <a href="climbing-epic.html" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-secondary/30 transition-colors">攀登史诗</a>
+            <a href="humanity-eternal.html" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-secondary/30 transition-colors">人文永恒</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- 英雄区域 -->
+  <section class="relative h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="image/15.jpg" alt="哈巴雪山全景" class="w-full h-full object-cover animate-fade-in">
+      <div class="absolute inset-0 bg-gradient-to-b from-dark/60 via-dark/40 to-dark/70"></div>
+    </div>
+    <div class="container mx-auto px-4 z-10 text-center">
+      <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-heading font-bold text-white text-shadow-lg animate-fade-in" style="animation-delay: 0.2s">哈巴雪山</h1>
+      <p class="text-[clamp(1.2rem,3vw,1.8rem)] text-white/90 text-shadow max-w-3xl mx-auto mt-6 animate-fade-in" style="animation-delay: 0.5s">自然与挑战的完美融合</p>
+      <div class="mt-12 animate-fade-in" style="animation-delay: 0.8s">
+        <a href="#explore" class="inline-block px-8 py-4 bg-secondary hover:bg-secondary-light text-white font-medium rounded-full transition-all duration-300 shadow-lg hover:shadow-elevation-hover transform hover:-translate-y-1">
+          开始探索 <i class="fa fa-arrow-down ml-2"></i>
+        </a>
+      </div>
+    </div>
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <a href="#explore" class="text-white/70 hover:text-white transition-colors">
+        <i class="fa fa-chevron-down text-2xl"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- 探索哈巴雪山 -->
+  <section id="explore" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 animate-on-scroll">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">探索哈巴雪山</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto">哈巴雪山位于云南省迪庆州香格里拉市，是云南著名的雪山之一，海拔5396米，以其壮丽的自然风光和丰富的生态系统闻名。</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-elevation-2 card-hover animate-on-scroll" style="animation-delay: 0.2s">
+          <div class="h-64 overflow-hidden">
+            <img src="https://picsum.photos/id/62/600/400" alt="雪岭天窗" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+          </div>
+          <div class="p-6">
+            <div class="flex items-center mb-3">
+              <span class="text-xs font-medium bg-primary/10 text-primary px-3 py-1 rounded-full">自然奇观</span>
+            </div>
+            <h3 class="text-xl font-heading font-semibold text-dark mb-2">雪岭天窗</h3>
+            <p class="text-gray-600 mb-4">哈巴雪山独特的地理环境造就了众多令人叹为观止的自然景观，雪岭天窗更是其中一绝。</p>
+            <a href="snow-sky.html" class="inline-flex items-center text-primary font-medium hover:text-secondary transition-colors">
+              了解更多 <i class="fa fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl overflow-hidden shadow-elevation-2 card-hover animate-on-scroll" style="animation-delay: 0.4s">
+          <div class="h-64 overflow-hidden">
+            <img src="https://picsum.photos/id/28/600/400" alt="云巅征途" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+          </div>
+          <div class="p-6">
+            <div class="flex items-center mb-3">
+              <span class="text-xs font-medium bg-primary/10 text-primary px-3 py-1 rounded-full">登山挑战</span>
+            </div>
+            <h3 class="text-xl font-heading font-semibold text-dark mb-2">云巅征途</h3>
+            <p class="text-gray-600 mb-4">作为入门级雪山，哈巴雪山吸引着众多登山爱好者。登顶哈巴，体验"一览众山小"的豪迈。</p>
+            <a href="peak-journey.html" class="inline-flex items-center text-primary font-medium hover:text-secondary transition-colors">
+              了解更多 <i class="fa fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl overflow-hidden shadow-elevation-2 card-hover animate-on-scroll" style="animation-delay: 0.6s">
+          <div class="h-64 overflow-hidden">
+            <img src="https://picsum.photos/id/29/600/400" alt="秘境生灵" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+          </div>
+          <div class="p-6">
+            <div class="flex items-center mb-3">
+              <span class="text-xs font-medium bg-primary/10 text-primary px-3 py-1 rounded-full">生态系统</span>
+            </div>
+            <h3 class="text-xl font-heading font-semibold text-dark mb-2">秘境生灵</h3>
+            <p class="text-gray-600 mb-4">哈巴雪山拥有完整的生态系统，是众多珍稀动植物的家园，探索这片秘境，感受生命的奇迹。</p>
+            <a href="secret-creatures.html" class="inline-flex items-center text-primary font-medium hover:text-secondary transition-colors">
+              了解更多 <i class="fa fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 哈巴雪山概览 -->
+  <section class="py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="animate-on-scroll">
+          <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">哈巴雪山概览</h2>
+          <p class="text-gray-700 mb-6 leading-relaxed">哈巴雪山位于云南省迪庆藏族自治州香格里拉市东南部，是喜马拉雅山脉的一部分，海拔5396米。它是云南著名的雪山之一，也是世界著名的徒步和登山胜地。</p>
+          <p class="text-gray-700 mb-8 leading-relaxed">哈巴雪山以其壮丽的自然风光、丰富的生物多样性和独特的文化遗产吸引着来自世界各地的游客。无论您是想挑战自我攀登高峰，还是想欣赏大自然的美景，哈巴雪山都能满足您的需求。</p>
+          
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+            <div class="text-center">
+              <div class="text-3xl font-bold text-primary mb-1">5396</div>
+              <div class="text-sm text-gray-600">海拔(米)</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-primary mb-1">4000+</div>
+              <div class="text-sm text-gray-600">植物种类</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-primary mb-1">100+</div>
+              <div class="text-sm text-gray-600">动物种类</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-primary mb-1">98%</div>
+              <div class="text-sm text-gray-600">森林覆盖率</div>
+            </div>
+          </div>
+          
+          <a href="mountain-view.html" class="inline-block px-6 py-3 bg-primary hover:bg-secondary text-white font-medium rounded-lg transition-all duration-300 shadow-md hover:shadow-elevation-hover">
+            了解更多 <i class="fa fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+        
+        <div class="relative animate-on-scroll">
+          <div class="relative z-10 rounded-2xl overflow-hidden shadow-elevation-3">
+            <img src="https://picsum.photos/id/26/800/600" alt="哈巴雪山全景" class="w-full h-auto">
+          </div>
+          <div class="absolute -bottom-6 -right-6 w-64 h-64 bg-accent/30 rounded-full -z-0"></div>
+          <div class="absolute -top-6 -left-6 w-32 h-32 bg-secondary/20 rounded-full -z-0"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 攀登指南 -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 animate-on-scroll">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">攀登指南</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto">无论您是经验丰富的登山家还是初次尝试的新手，我们都为您提供专业的攀登指南和建议。</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-neutral rounded-2xl overflow-hidden shadow-elevation-2 card-hover animate-on-scroll" style="animation-delay: 0.2s">
+          <div class="p-6">
+            <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+              <i class="fa fa-map-signs text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-heading font-semibold text-dark mb-3">路线规划</h3>
+            <p class="text-gray-600 mb-4">我们提供详细的登山路线规划，包括不同难度级别的路线选择，帮助您找到最适合自己的登山路径。</p>
+            <a href="peak-route.html" class="inline-flex items-center text-primary font-medium hover:text-secondary transition-colors">
+              查看路线 <i class="fa fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-neutral rounded-2xl overflow-hidden shadow-elevation-2 card-hover animate-on-scroll" style="animation-delay: 0.4s">
+          <div class="p-6">
+            <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+              <i class="fa fa-suitcase text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-heading font-semibold text-dark mb-3">装备建议</h3>
+            <p class="text-gray-600 mb-4">专业的装备是登山成功的关键。我们为您提供详细的装备清单和购买建议，确保您准备充分。</p>
+            <a href="equipment-guide.html" class="inline-flex items-center text-primary font-medium hover:text-secondary transition-colors">
+              装备清单 <i class="fa fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-neutral rounded-2xl overflow-hidden shadow-elevation-2 card-hover animate-on-scroll" style="animation-delay: 0.6s">
+          <div class="p-6">
+            <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+              <i class="fa fa-user text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-heading font-semibold text-dark mb-3">专业指导</h3>
+            <p class="text-gray-600 mb-4">如果您是登山新手，或者希望获得更专业的指导，我们提供经验丰富的登山向导服务。</p>
+            <a href="expert-guide.html" class="inline-flex items-center text-primary font-medium hover:text-secondary transition-colors">
+              联系向导 <i class="fa fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 生态保护 -->
+  <section class="py-20 bg-primary text-white clip-path-slant">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="animate-on-scroll">
+          <h2 class="text-3xl md:text-4xl font-heading font-bold mb-6">生态保护</h2>
+          <p class="text-white/90 mb-6 leading-relaxed">哈巴雪山是众多珍稀动植物的家园，保护这片自然环境是我们共同的责任。我们致力于推广可持续旅游理念，确保每一位访客都能在欣赏美景的同时，不对环境造成破坏。</p>
+          <p class="text-white/90 mb-8 leading-relaxed">我们与当地社区和环保组织合作，开展了多项保护项目，包括森林恢复、野生动物监测和环境教育等。我们希望通过这些努力，让哈巴雪山的自然美景能够永远保持下去。</p>
+          
+          <div class="flex flex-wrap gap-4 mb-8">
+            <div class="flex items-center">
+              <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mr-4">
+                <i class="fa fa-tree text-white"></i>
+              </div>
+              <div>
+                <div class="text-xl font-bold">5000+</div>
+                <div class="text-sm text-white/70">种植树木</div>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mr-4">
+                <i class="fa fa-users text-white"></i>
+              </div>
+              <div>
+                <div class="text-xl font-bold">1000+</div>
+                <div class="text-sm text-white/70">志愿者参与</div>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mr-4">
+                <i class="fa fa-globe text-white"></i>
+              </div>
+              <div>
+                <div class="text-xl font-bold">10+</div>
+                <div class="text-sm text-white/70">保护项目</div>
+              </div>
+            </div>
+          </div>
+          
+          <a href="#" class="inline-block px-6 py-3 bg-white text-primary hover:bg-neutral font-medium rounded-lg transition-all duration-300 shadow-md hover:shadow-elevation-hover">
+            参与保护 <i class="fa fa-heart ml-2"></i>
+          </a>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-4 animate-on-scroll">
+          <div class="rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-500">
+            <img src="https://picsum.photos/id/29/400/500" alt="哈巴雪山生态" class="w-full h-auto">
+          </div>
+          <div class="rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-500" style="margin-top: 32px;">
+            <img src="https://picsum.photos/id/15/400/500" alt="哈巴雪山生态" class="w-full h-auto">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 照片画廊 -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 animate-on-scroll">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">刹那永恒</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto">探索哈巴雪山的美丽瞬间，每一张照片都讲述着一个独特的故事。</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 animate-on-scroll">
+        <div class="gallery-item overflow-hidden rounded-lg">
+          <img src="https://picsum.photos/id/29/600/600" alt="哈巴雪山全景" class="w-full h-64 object-cover transform hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="gallery-item overflow-hidden rounded-lg">
+          <img src="https://picsum.photos/id/28/600/600" alt="雪山日出" class="w-full h-64 object-cover transform hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="gallery-item overflow-hidden rounded-lg">
+          <img src="https://picsum.photos/id/26/600/600" alt="山间湖泊" class="w-full h-64 object-cover transform hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="gallery-item overflow-hidden rounded-lg">
+          <img src="https://picsum.photos/id/15/600/600" alt="森林小径" class="w-full h-64 object-cover transform hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="gallery-item overflow-hidden rounded-lg">
+          <img src="https://picsum.photos/id/62/600/600" alt="雪山云海" class="w-full h-64 object-cover transform hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="gallery-item overflow-hidden rounded-lg">
+          <img src="https://picsum.photos/id/34/600/600" alt="登山者" class="w-full h-64 object-cover transform hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="gallery-item overflow-hidden rounded-lg">
+          <img src="https://picsum.photos/id/123/600/600" alt="高山花卉" class="w-full h-64 object-cover transform hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="gallery-item overflow-hidden rounded-lg">
+          <img src="https://picsum.photos/id/106/600/600" alt="藏族文化" class="w-full h-64 object-cover transform hover:scale-110 transition-transform duration-500">
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="eternal-moments.html" class="inline-block px-6 py-3 bg-primary hover:bg-secondary text-white font-medium rounded-lg transition-all duration-300 shadow-md hover:shadow-elevation-hover">
+          查看更多照片 <i class="fa fa-image ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系我们 -->
+  <section class="py-20 bg-neutral">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div class="animate-on-scroll">
+          <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">联系我们</h2>
+          <p class="text-gray-600 mb-8 leading-relaxed">如果您对哈巴雪山有任何疑问，或者需要更多信息，欢迎随时联系我们。我们的专业团队将竭诚为您提供帮助和支持。</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="flex items-start">
+              <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                <i class="fa fa-map-marker text-primary"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-dark mb-1">地址</h3>
+                <p class="text-gray-600">云南省迪庆州香格里拉市哈巴村</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                <i class="fa fa-phone text-primary"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-dark mb-1">电话</h3>
+                <p class="text-gray-600">0887-88888888</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                <i class="fa fa-envelope text-primary"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-dark mb-1">邮箱</h3>
+                <p class="text-gray-600">info@habamountain.com</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="flex space-x-4">
+            <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+              <i class="fa fa-weixin"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+              <i class="fa fa-weibo"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+              <i class="fa fa-instagram"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+              <i class="fa fa-youtube-play"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-2xl p-8 shadow-elevation-2 animate-on-scroll">
+          <h3 class="text-2xl font-heading font-semibold text-dark mb-6">发送消息</h3>
+          <form>
+            <div class="mb-4">
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-1">姓名</label>
+              <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="请输入您的姓名">
+            </div>
+            <div class="mb-4">
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-1">邮箱</label>
+              <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="请输入您的邮箱">
+            </div>
+            <div class="mb-4">
+              <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">主题</label>
+              <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="请输入消息主题">
+            </div>
+            <div class="mb-6">
+              <label for="message" class="block text-sm font-medium text-gray-700 mb-1">消息</label>
+              <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="请输入您的消息"></textarea>
+            </div>
+            <button type="submit" class="w-full py-3 px-6 bg-primary hover:bg-secondary text-white font-medium rounded-lg transition-all duration-300 shadow-md hover:shadow-elevation-hover">
+              发送消息 <i class="fa fa-paper-plane ml-2"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-dark text-white pt-16 pb-8">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div class="animate-on-scroll">
+          <h3 class="text-xl font-heading font-semibold mb-6">哈巴雪山</h3>
+          <p class="text-white/70 mb-6">探索自然之美，挑战自我极限</p>
+          <div class="flex space-x-4">
+            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors">
+              <i class="fa fa-weixin text-white"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors">
+              <i class="fa fa-weibo text-white"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors">
+              <i class="fa fa-instagram text-white"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors">
+              <i class="fa fa-youtube-play text-white"></i>
+            </a>
+          </div>
+        </div>
+        <div class="animate-on-scroll">
+          <h3 class="text-xl font-heading font-semibold mb-6">快速链接</h3>
+          <ul class="space-y-3">
+            <li><a href="index.html" class="text-white/70 hover:text-white transition-colors">首页</a></li>
+            <li><a href="snow-sky.html" class="text-white/70 hover:text-white transition-colors">雪岭天窗</a></li>
+            <li><a href="mountain-view.html" class="text-white/70 hover:text-white transition-colors">圣山真颜</a></li>
+            <li><a href="peak-journey.html" class="text-white/70 hover:text-white transition-colors">云巅征途</a></li>
+            <li><a href="secret-creatures.html" class="text-white/70 hover:text-white transition-colors">秘境生灵</a></li>
+            <li><a href="expert-guide.html" class="text-white/70 hover:text-white transition-colors">行家指路</a></li>
+            <li><a href="eternal-moments.html" class="text-white/70 hover:text-white transition-colors">刹那永恒</a></li>
+          </ul>
+        </div>
+        <div class="animate-on-scroll">
+          <h3 class="text-xl font-heading font-semibold mb-6">服务</h3>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-white/70 hover:text-white transition-colors">登山向导</a></li>
+            <li><a href="#" class="text-white/70 hover:text-white transition-colors">装备租赁</a></li>
+            <li><a href="#" class="text-white/70 hover:text-white transition-colors">住宿安排</a></li>
+            <li><a href="#" class="text-white/70 hover:text-white transition-colors">摄影服务</a></li>
+            <li><a href="#" class="text-white/70 hover:text-white transition-colors">团队定制</a></li>
+            <li><a href="#" class="text-white/70 hover:text-white transition-colors">环境保护</a></li>
+          </ul>
+        </div>
+        <div class="animate-on-scroll">
+          <h3 class="text-xl font-heading font-semibold mb-6">订阅通讯</h3>
+          <p class="text-white/70 mb-4">订阅我们的通讯，获取最新的哈巴雪山资讯和活动信息。</p>
+          <form class="mb-4">
+            <div class="flex">
+              <input type="email" placeholder="您的邮箱地址" class="px-4 py-2 w-full rounded-l-lg focus:outline-none text-dark">
+              <button type="submit" class="bg-primary hover:bg-secondary text-white px-4 rounded-r-lg transition-colors">
+                <i class="fa fa-paper-plane"></i>
+              </button>
+            </div>
+          </form>
+          <p class="text-white/50 text-sm">我们尊重您的隐私，不会向第三方分享您的信息。</p>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="text-white/50 text-sm mb-4 md:mb-0">© 2025 哈巴雪山. 保留所有权利.</p>
+          <div class="flex space-x-6">
+            <a href="#" class="text-white/50 hover:text-white text-sm transition-colors">隐私政策</a>
+            <a href="#" class="text-white/50 hover:text-white text-sm transition-colors">使用条款</a>
+            <a href="#" class="text-white/50 hover:text-white text-sm transition-colors">Cookie 政策</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 导航菜单切换
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // 滚动时导航栏样式变化
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('bg-primary/95', 'shadow-md');
+        navbar.classList.remove('bg-primary/90');
+      } else {
+        navbar.classList.remove('bg-primary/95', 'shadow-md');
+        navbar.classList.add('bg-primary/90');
+      }
+    });
+
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // 如果是移动菜单，点击后关闭
+          const mobileMenu = document.getElementById('mobile-menu');
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+          }
+        }
+      });
+    });
+
+    // 滚动动画
+    function checkScroll() {
+      const elements = document.querySelectorAll('.animate-on-scroll');
+      
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.2;
+        
+        if (elementPosition < screenPosition) {
+          element.classList.add('visible');
+        }
+      });
+    }
+
+    // 初始检查
+    checkScroll();
+    
+    // 滚动时检查
+    window.addEventListener('scroll', checkScroll);
+  </script>
+</body>
+</html>    

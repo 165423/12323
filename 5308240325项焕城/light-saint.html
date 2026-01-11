@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>光影圣境 - 哈巴雪山</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1E3A8A',
+            secondary: '#3B82F6',
+            accent: '#93C5FD',
+            neutral: '#F1F5F9',
+            dark: '#0F172A',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            heading: ['Montserrat', 'sans-serif'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      .text-shadow-lg {
+        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      }
+      .backdrop-blur {
+        backdrop-filter: blur(8px);
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .clip-path-slant {
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      }
+      .bg-gradient-mountain {
+        background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 50%, #93C5FD 100%);
+      }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body class="font-sans text-dark bg-neutral overflow-x-hidden">
+  <!-- 导航栏 -->
+  <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+    <nav class="bg-primary/90 backdrop-blur text-white">
+      <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center">
+          <div class="text-2xl font-heading font-bold flex items-center">
+            <i class="fa fa-mountain mr-2" aria-hidden="true"></i>
+            <span>哈巴雪山</span>
+          </div>
+        </div>
+
+        <!-- 桌面导航 -->
+        <div class="hidden md:flex items-center space-x-1">
+          <div class="group relative">
+            <a href="index.html" class="block py-2 px-4 hover:bg-secondary/30 transition-colors rounded-md">首页</a>
+          </div>
+          <div class="group relative">
+            <a href="snow-sky.html" class="block py-2 px-4 hover:bg-secondary/30 transition-colors rounded-md">雪岭天窗</a>
+          </div>
+          <div class="group relative">
+            <a href="mountain-view.html" class="block py-2 px-4 hover:bg-secondary/30 transition-colors rounded-md">圣山真颜</a>
+          </div>
+          <div class="group relative">
+            <a href="peak-journey.html" class="block py-2 px-4 hover:bg-secondary/30 transition-colors rounded-md">云巅征途</a>
+            <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100">
+              <div class="py-1">
+                <a href="peak-route.html" class="block px-4 py-2 text-sm text-dark hover:bg-neutral">巅峰路线</a>
+                <a href="equipment-guide.html" class="block px-4 py-2 text-sm text-dark hover:bg-neutral">行装秘籍</a>
+                <a href="summit-moment.html" class="block px-4 py-2 text-sm text-dark hover:bg-neutral">登峰时刻</a>
+              </div>
+            </div>
+          </div>
+          <div class="group relative">
+            <a href="secret-creatures.html" class="block py-2 px-4 hover:bg-secondary/30 transition-colors rounded-md">秘境生灵</a>
+          </div>
+          <div class="group relative">
+            <a href="expert-guide.html" class="block py-2 px-4 hover:bg-secondary/30 transition-colors rounded-md">行家指路</a>
+          </div>
+          <div class="group relative">
+            <a href="eternal-moments.html" class="block py-2 px-4 hover:bg-secondary/30 transition-colors rounded-md bg-secondary/30">刹那永恒</a>
+            <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100">
+              <div class="py-1">
+                <a href="light-saint.html" class="block px-4 py-2 text-sm text-dark hover:bg-neutral bg-neutral">光影圣境</a>
+                <a href="climbing-epic.html" class="block px-4 py-2 text-sm text-dark hover:bg-neutral">攀登史诗</a>
+                <a href="humanity-eternal.html" class="block px-4 py-2 text-sm text-dark hover:bg-neutral">人文永恒</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 移动端菜单按钮 -->
+        <div class="md:hidden">
+          <button id="menu-toggle" class="text-white hover:text-accent focus:outline-none">
+            <i class="fa fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- 移动端导航菜单 -->
+      <div id="mobile-menu" class="md:hidden hidden bg-primary/95 backdrop-blur">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-secondary/30">首页</a>
+          <a href="snow-sky.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-secondary/30">雪岭天窗</a>
+          <a href="mountain-view.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-secondary/30">圣山真颜</a>
+          <a href="peak-journey.html" class="block px-3 py-2 rounded-md text-base font-medium bg-secondary/30">云巅征途</a>
+          <div class="pl-4 space-y-1">
+            <a href="peak-route.html" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-secondary/30">巅峰路线</a>
+            <a href="equipment-guide.html" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-secondary/30">行装秘籍</a>
+            <a href="summit-moment.html" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-secondary/30">登峰时刻</a>
+          </div>
+          <a href="secret-creatures.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-secondary/30">秘境生灵</a>
+          <a href="expert-guide.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-secondary/30">行家指路</a>
+          <a href="eternal-moments.html" class="block px-3 py-2 rounded-md text-base font-medium bg-secondary/30">刹那永恒</a>
+          <div class="pl-4 space-y-1">
+            <a href="light-saint.html" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-secondary/30 bg-secondary/30">光影圣境</a>
+            <a href="climbing-epic.html" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-secondary/30">攀登史诗</a>
+            <a href="humanity-eternal.html" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-secondary/30">人文永恒</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- 英雄区域 -->
+  <section class="relative h-96 flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="https://picsum.photos/id/99/1920/600" alt="光影圣境" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-b from-dark/60 to-dark/30"></div>
+    </div>
+    <div class="container mx-auto px-4 z-10 text-center">
+      <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-heading font-bold text-white text-shadow-lg">光影圣境</h1>
+      <p class="text-[clamp(1rem,2vw,1.25rem)] text-white text-shadow max-w-2xl mx-auto mt-4">哈巴雪山的绝美光影瞬间</p>
+    </div>
+  </section>
+
+  <!-- 内容区域 -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary mb-4">雪山光影</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto">哈巴雪山因其独特的地理位置和气候条件，造就了无数令人叹为观止的光影奇观。无论是日出时分的金色光辉，还是暮色中的神秘氛围，都值得用镜头记录下来。</p>
+      </div>
+
+      <!-- 摄影指南 -->
+      <div class="mb-16">
+        <h3 class="text-2xl font-heading font-semibold text-dark mb-8">摄影最佳时机</h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-neutral rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300">
+            <div class="text-3xl text-primary mb-4">
+              <i class="fa fa-sunrise"></i>
+            </div>
+            <h4 class="text-xl font-medium text-dark mb-2">日出时分</h4>
+            <p class="text-gray-600 mb-3">日出前30分钟至日出后1小时是拍摄哈巴雪山的黄金时间，阳光柔和，色彩丰富，雪山被染成金黄色，非常壮观。</p>
+            <p class="text-sm text-gray-500">最佳拍摄点：哈巴村观景台、黑海营地</p>
+          </div>
+
+          <div class="bg-neutral rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300">
+            <div class="text-3xl text-primary mb-4">
+              <i class="fa fa-sunset"></i>
+            </div>
+            <h4 class="text-xl font-medium text-dark mb-2">日落时分</h4>
+            <p class="text-gray-600 mb-3">日落前1小时至日落后30分钟，雪山在夕阳的映照下呈现出橙红色，与周围的云层和天空形成美丽的对比。</p>
+            <p class="text-sm text-gray-500">最佳拍摄点：哈巴村观景台、杜鹃花海</p>
+          </div>
+
+          <div class="bg-neutral rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300">
+            <div class="text-3xl text-primary mb-4">
+              <i class="fa fa-moon-o"></i>
+            </div>
+            <h4 class="text-xl font-medium text-dark mb-2">星空夜景</h4>
+            <p class="text-gray-600 mb-3">晴朗的夜晚，哈巴雪山的星空格外璀璨。银河清晰可见，与雪山的轮廓相映成趣，是拍摄星空摄影的绝佳地点。</p>
+            <p class="text-sm text-gray-500">最佳拍摄点：哈巴村、大本营、黑海营地</p>
+          </div>
+
+          <div class="bg-neutral rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300">
+            <div class="text-3xl text-primary mb-4">
+              <i class="fa fa-cloud"></i>
+            </div>
+            <h4 class="text-xl font-medium text-dark mb-2">云海奇观</h4>
+            <p class="text-gray-600 mb-3">雨后或清晨，哈巴雪山经常出现壮观的云海景观。云海翻腾，雪山在云中若隐若现，宛如仙境。</p>
+            <p class="text-sm text-gray-500">最佳拍摄点：哈巴村观景台、杜鹃花海、雪线以上</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 摄影作品展示 -->
+      <div class="mb-16">
+        <h3 class="text-2xl font-heading font-semibold text-dark mb-8">摄影作品精选</h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="group relative overflow-hidden rounded-xl shadow-md">
+            <img src="image/23.jpg" alt="哈巴雪山日出" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+              <h4 class="text-xl font-medium text-white mb-2">金顶晨光</h4>
+              <p class="text-white/80">日出时分，阳光洒在哈巴雪山主峰上，形成壮观的"日照金山"景观。</p>
+            </div>
+          </div>
+
+          <div class="group relative overflow-hidden rounded-xl shadow-md">
+            <img src="image/19.jpg" alt="哈巴雪山星空" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+              <h4 class="text-xl font-medium text-white mb-2">星夜圣境</h4>
+              <p class="text-white/80">晴朗的夜空，银河横跨哈巴雪山，与雪山的轮廓相映成趣。</p>
+            </div>
+          </div>
+
+          <div class="group relative overflow-hidden rounded-xl shadow-md">
+            <img src="image/10.jpg" alt="哈巴雪山云海" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+              <h4 class="text-xl font-medium text-white mb-2">云海仙踪</h4>
+              <p class="text-white/80">雨后初晴，云海笼罩哈巴雪山，群峰在云海中若隐若现，宛如仙境。</p>
+            </div>
+          </div>
+
+          <div class="group relative overflow-hidden rounded-xl shadow-md">
+            <img src="image/13.jpg" alt="哈巴雪山冰川" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+              <h4 class="text-xl font-medium text-white mb-2">冰川秘境</h4>
+              <p class="text-white/80">哈巴雪山的冰川在阳光的照耀下呈现出蓝色的光芒，神秘而美丽。</p>
+            </div>
+          </div>
+
+          <div class="group relative overflow-hidden rounded-xl shadow-md">
+            <img src="image/20.jpg" alt="哈巴雪山杜鹃花" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+              <h4 class="text-xl font-medium text-white mb-2">杜鹃花海</h4>
+              <p class="text-white/80">春季，哈巴雪山脚下的杜鹃花海盛开，五颜六色的杜鹃花与雪山相映成趣。</p>
+            </div>
+          </div>
+
+          <div class="group relative overflow-hidden rounded-xl shadow-md">
+            <img src="image/12.jpg" alt="哈巴雪山瀑布" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+              <h4 class="text-xl font-medium text-white mb-2">雪山飞瀑</h4>
+              <p class="text-white/80">夏季，雪山融化的雪水形成壮观的瀑布，从悬崖上倾泻而下，气势磅礴。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 text-center">
+          <button id="load-more-photos" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/80 transition-colors shadow-md hover:shadow-lg">
+            加载更多作品
+          </button>
+        </div>
+      </div>
+
+      <!-- 摄影技巧 -->
+      <div class="mb-16">
+        <h3 class="text-2xl font-heading font-semibold text-dark mb-8">摄影技巧分享</h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-neutral rounded-xl p-6 shadow-md">
+            <h4 class="text-xl font-medium text-dark mb-4">设备选择</h4>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                <span>相机：全画幅单反或微单相机，画质更好，高感性能更佳</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                <span>镜头：广角镜头（16 - 35mm）用于拍摄大场景，长焦镜头（70 - 200mm）用于特写</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                <span>三脚架：拍摄夜景和长时间曝光时必备</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                <span>滤镜：偏振镜可增强色彩饱和度，渐变灰滤镜可平衡光比</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                <span>备用电池和存储卡：高原低温会缩短电池寿命</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-neutral rounded-xl p-6 shadow-md">
+            <h4 class="text-xl font-medium text-dark mb-4">参数设置</h4>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <i class="fa fa-info-circle text-primary mt-1 mr-3"></i>
+                <span>光圈：风景拍摄建议使用f/8 - f/11的中等光圈，保证景深</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fa fa-info-circle text-primary mt-1 mr-3"></i>
+                <span>快门：根据光线情况调整，日出日落时使用1/125s - 1/250s</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fa fa-info-circle text-primary mt-1 mr-3"></i>
+                <span>ISO：尽量使用低ISO（100 - 200），保证画质</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fa fa-info-circle text-primary mt-1 mr-3"></i>
+                <span>白平衡：手动设置白平衡，日出日落时使用阴天模式增强暖色调</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fa fa-info-circle text-primary mt-1 mr-3"></i>
+                <span>对焦：使用手动对焦，将焦点对准雪山的关键部位</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-neutral rounded-xl p-6 shadow-md">
+            <h4 class="text-xl font-medium text-dark mb-4">构图技巧</h4>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <i class="fa fa-th text-primary mt-1 mr-3"></i>
+                <span>三分法：将画面分为九宫格，将雪山置于上三分之一或下三分之一处</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fa fa-arrows-alt text-primary mt-1 mr-3"></i>
+                <span>前景构图：利用杜鹃花、石头、湖泊等作为前景，增加画面层次感</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fa fa-object-group text-primary mt-1 mr-3"></i>
+                <span>框架构图：利用门框、窗户、树枝等作为框架，突出主体</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fa fa-align-center text-primary mt-1 mr-3"></i>
+                <span>对称构图：拍摄雪山在湖泊中的倒影，形成对称美</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fa fa-picture-o text-primary mt-1 mr-3"></i>
+                <span>对比构图：将雪山与人物、动物等对比，突出雪山的雄伟</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-neutral rounded-xl p-6 shadow-md">
+            <h4 class="text-xl font-medium text-dark mb-4">注意事项</h4>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <i class="fa fa-snowflake-o text-primary mt-1 mr-3"></i>
+                <span>保暖：高原气温低，注意相机和电池的保暖</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fa fa-cloud text-primary mt-1 mr-3"></i>
+                <span>天气：关注天气预报，选择晴朗、少云的天气拍摄</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fa fa-clock-o text-primary mt-1 mr-3"></i>
+                <span>时间：提前到达拍摄地点，预留充足的时间寻找最佳拍摄位置</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fa fa-battery-full text-primary mt-1 mr-3"></i>
+                <span>电池：低温会缩短电池寿命，多带备用电池并放在贴身口袋保暖</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fa fa-exclamation-triangle text-primary mt-1 mr-3"></i>
+                <span>安全：在拍摄过程中注意自身安全，特别是在陡峭的山坡和冰面上</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 摄影之旅 -->
+  <section class="py-16 bg-neutral">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary mb-4">摄影主题之旅</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto">参加我们的摄影主题之旅，在专业摄影师的指导下，捕捉哈巴雪山的绝美瞬间，记录难忘的旅行记忆。</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+          <div class="h-60 overflow-hidden">
+            <img src="https://picsum.photos/id/106/600/400" alt="日出摄影之旅" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h4 class="text-xl font-medium text-dark">日出摄影之旅</h4>
+                <p class="text-gray-500">4小时 | 专业指导 | 小团队</p>
+              </div>
+              <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">热门</span>
+            </div>
+            <p class="text-gray-600 mb-4">在专业摄影师的带领下，前往最佳拍摄点，捕捉哈巴雪山日出时分的壮丽景色。学习日出摄影技巧，包括曝光控制、构图方法等。</p>
+            <div class="flex items-center text-sm text-gray-500 mb-4">
+              <div class="flex items-center mr-4">
+                <i class="fa fa-clock-o mr-1"></i>
+                <span>凌晨4:00出发</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fa fa-users mr-1"></i>
+                <span>最多8人</span>
+              </div>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xl font-bold text-primary">¥380/人</span>
+              <a href="#" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/80 transition-colors">
+                立即报名
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+          <div class="h-60 overflow-hidden">
+            <img src="https://picsum.photos/id/107/600/400" alt="星空摄影工作坊" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h4 class="text-xl font-medium text-dark">星空摄影工作坊</h4>
+                <p class="text-gray-500">6小时 | 专业指导 | 星空摄影</p>
+              </div>
+              <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm">推荐</span>
+            </div>
+            <p class="text-gray-600 mb-4">在晴朗的夜晚，跟随专业摄影师学习星空摄影技巧。从设备设置到构图方法，从单张拍摄到堆栈合成，全方位掌握星空摄影技术。</p>
+            <div class="flex items-center text-sm text-gray-500 mb-4">
+              <div class="flex items-center mr-4">
+                <i class="fa fa-clock-o mr-1"></i>
+                <span>晚上9:00出发</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fa fa-users mr-1"></i>
+                <span>最多6人</span>
+              </div>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xl font-bold text-primary">¥480/人</span>
+              <a href="#" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/80 transition-colors">
+                立即报名
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+          <div class="h-60 overflow-hidden">
+            <img src="https://picsum.photos/id/108/600/400" alt="云海摄影体验" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h4 class="text-xl font-medium text-dark">云海摄影体验</h4>
+                <p class="text-gray-500">3小时 | 专业指导 | 亲近自然</p>
+              </div>
+              <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm">特色</span>
+            </div>
+            <p class="text-gray-600 mb-4">在雨后或清晨，跟随专业摄影师前往云海最佳观测点，捕捉哈巴雪山云海奇观。学习如何利用光线和构图突出云海的气势。</p>
+            <div class="flex items-center text-sm text-gray-500 mb-4">
+              <div class="flex items-center mr-4">
+                <i class="fa fa-clock-o mr-1"></i>
+                <span>早上6:00出发</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fa fa-users mr-1"></i>
+                <span>最多10人</span>
+              </div>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xl font-bold text-primary">¥280/人</span>
+              <a href="#" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/80 transition-colors">
+                立即报名
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-primary text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="text-center">
+        <p>&copy; 2024 哈巴雪山摄影之旅. 保留所有权利.</p>
+        <div class="mt-2">
+          <a href="#" class="text-white hover:text-accent mx-2">关于我们</a>
+          <a href="#" class="text-white hover:text-accent mx-2">联系我们</a>
+          <a href="#" class="text-white hover:text-accent mx-2">隐私政策</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // 模拟加载更多照片功能
+    const loadMorePhotosButton = document.getElementById('load-more-photos');
+    loadMorePhotosButton.addEventListener('click', () => {
+      alert('暂未实现加载更多照片功能，敬请期待！');
+    });
+  </script>
+</body>
+
+</html>       
